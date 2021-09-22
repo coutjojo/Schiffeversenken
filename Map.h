@@ -7,16 +7,15 @@ template <int size> class Map{
 
 private:
     int field[size][size];
-
-    
+  
 public:
-    Map(int length, pos pos);
+    Map(){};
     
     bool isPosFree(coords coords,int shipID);
 
-    void setShip(coords coords, int shipID){
+    void setShip(coords coords, int shipID);
     
-    bool isAlive(int shipID)
+    bool isAlive(int shipID);
          
     int prozessshot(coords coords);
 };
