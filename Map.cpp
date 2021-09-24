@@ -1,17 +1,38 @@
-#include<Map>
+#include"Map.h"
 
+Map::Map(int size){
+    this->mapSize = size;
+    for(int i = 0; i<size;i++){
+        std::vector<int> temp;
+        for(int j = 0; j<size;j++){
+            temp.push_back(0);
+        }
+       field.push_back(temp);
+    }
+    std::cout<<"works";
+}
+/*Map::Map(){
+    std::cout<<"Standardkonstruktor wurde aufgerufen"<<std::endl;
+ this->mapSize = 10;
+    for(int i =0; i<10;i++){
+        for(int j = 0; j<10;j++){
+            field[i][j]=0;
+        }
+    }
 
-template <int size> bool Map<size>::isPosFree(coords coords){
-    if(field[ship.coords.x][ship.coords.y] == 0){
-        return true 
+}*/
+
+bool Map::isPosFree(coords coords){
+    if(field[coords.x][coords.y] == 0){
+        return true ;
     }else{
             return false;
         }
 }
 
-template <int size> bool Map<size>::isAlive(int shipID){
-    for(int i = 0; i++;i<size){
-        for(int j = 0;j<size;j++){
+ bool Map::isAlive(int shipID){
+    for(int i = 0;i<mapSize;i++){
+        for(int j = 0;j<mapSize;j++){
             if(field[i][j]= shipID){return true;}//schiff lebt noch
         }
     }
@@ -19,11 +40,11 @@ template <int size> bool Map<size>::isAlive(int shipID){
 }
 
 
-template <int size> void Map<size>::setShip(coords coords, int shipID){
+void Map::setShip(coords coords, int shipID){
         field[coords.x][coords.y] = shipID;
     }
 
-template <int size> int Map<size>::processShot(coords coords){ // 0 = platscher 1 = hit 2 = treffer versenkt 3 = feld wurde schon beschossen
+int Map::processShot(coords coords,int shipID){ // 0 = platscher 1 = hit 2 = treffer versenkt 3 = feld wurde schon beschossen
         if(field[coords.x][coords.y] == 1)
         return 3; // wurde schon beschosen
         else if(field[coords.x][coords.y] == 0){
@@ -38,4 +59,5 @@ template <int size> int Map<size>::processShot(coords coords){ // 0 = platscher 
                 return 3; // treffer versenkt;
             }
         }
+        return 666;
 }

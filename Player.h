@@ -1,17 +1,18 @@
 #ifndef PLAYER
 #define PLAYER
+#include"Map.h"
 
 class Player {
 private:
 
-    int p_mapSize, p_nShips;
-    Map<> map;
-
+    int mapSize, nShips;
+    Map map;
+    void playerInit();
 public:
-    Player(int mapSize, int nShips = 5);
-
-    //coords fireShot();
-    //void receiveShot(coods loc);
+    Player(int mapSize, int nShips);
+    Player(){};
+    coords fireShot();
+    void receiveShot(coords loc);
     bool shipsAlive();
     
 };

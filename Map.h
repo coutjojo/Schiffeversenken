@@ -1,21 +1,31 @@
+#ifndef MAP 
+#define MAP
+
+#include<vector>
+#include<iostream>
+
 enum direction {horizontal,vertikal};//beginn obere linke ecke
 struct coords{ 
 int x,y;
 };
 
-template <int size> class Map{
+
+class Map{
 
 private:
-    int field[size][size];
+ std::vector<std::vector<int>> field;
+ int mapSize;
   
 public:
+    Map(int size);
     Map(){};
     
-    bool isPosFree(coords coords,int shipID);
+   bool isPosFree(coords coords);
 
-    void setShip(coords coords, int shipID);
+   void setShip(coords coords, int shipID);
     
     bool isAlive(int shipID);
          
-    int prozessshot(coords coords);
+    int processShot(coords coords,int shipID);
 };
+#endif
